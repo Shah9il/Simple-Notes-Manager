@@ -51,7 +51,7 @@ public class ProfileUpdate extends AppCompatActivity {
                     String email = editTextEmail.getText().toString();
                     String password = editTextPassword.getText().toString();
 
-                    if (sqliteHelper.isEmailExists(email)) {
+                    if (usrID == 1) {
 
                         sqliteHelper.updateUserProfile(usrID,email,password);
                         Snackbar.make(buttonSave, "Information saved successfully! ", Snackbar.LENGTH_LONG).show();
