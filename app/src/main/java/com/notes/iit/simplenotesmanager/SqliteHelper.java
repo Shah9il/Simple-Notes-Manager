@@ -99,6 +99,21 @@ public class SqliteHelper extends SQLiteOpenHelper {
         long todo_id = db.insert(TABLE_USERS, null, values);
     }
 
+    public Cursor retriveUser() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cur =  db.rawQuery( "select rowid as _id,"+KEY_EMAIL+","+KEY_PASSWORD+" from "+ TABLE_USERS, null);
+        return cur;
+    }
+    public void updateUserProfile(Integer usrID, String usrEmail, String usrPass) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues  values = new ContentValues();
+        values.put(KEY_EMAIL , usrEmail);
+        values.put(KEY_PASSWORD , usrPass);
+        db.update(TABLE_USERS ,  values ,
+                "id=?" , new String[ ] {usrID.toString() } );
+    }
+
     public User retreiveUserByEmail(String email){
         SQLiteDatabase database=this.getReadableDatabase();
         Cursor cursor=database.query(TABLE_USERS,null,KEY_EMAIL+"=?",new String[]{email},null,null,null);
@@ -111,7 +126,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return null;
     }
-
 
     public boolean isEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();

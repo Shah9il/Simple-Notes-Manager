@@ -7,6 +7,8 @@
     <string name="username">Username</string>
     <string name="register">Register</string>
     <string name="back_to_login">Back to Login</string>
+    <string name="back_to_notes_list">Back to Notes List</string>
     <string name="add_notes">Add Notes</string>
-    <string name="save">save</string>
+    <string name="profile_update">Update Profile</string>
+    <string name="save">Save</string>
 </resources>

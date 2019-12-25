@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 public class NotesListActivity extends AppCompatActivity {
     FloatingActionButton noteEditOpenButton;
+    FloatingActionButton profileUpdateButton;
     ListView listView;
     SqliteHelper sqliteHelper;
     @Override
@@ -25,6 +26,13 @@ public class NotesListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        profileUpdateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(NotesListActivity.this, ProfileUpdate.class);
+                startActivity(intent);
+            }
+        });
         sqliteHelper=new SqliteHelper(this);
         Cursor cursor= sqliteHelper.retriveAllNotesCursor();
         CursorAdapter cursorAdapter=new NotesListAdapter(this,cursor);
@@ -33,6 +41,7 @@ public class NotesListActivity extends AppCompatActivity {
 
     private void initalizeViews() {
         noteEditOpenButton=(FloatingActionButton)findViewById(R.id.fab);
+        profileUpdateButton=(FloatingActionButton)findViewById(R.id.profileID);
         listView=(ListView)findViewById(R.id.list);
     }
 }
